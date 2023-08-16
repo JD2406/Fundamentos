@@ -19,5 +19,5 @@ using namespace std;
     int suma = valor1 + valor2;
     cout<<"El resultado de la suma es:   "<<suma<<endl;
     
-    
+    return 0;
 }

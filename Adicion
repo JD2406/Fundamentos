@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+
+using namespace std;
+
+
+    int valor1, valor2;
+    cout<<"Ingresar un valor:  ";
+    cin>> valor1;
+    
+    cout<<"Ingresar un valor:  ";
+    cin>> valor2;
+    
+    int suma = valor1 + valor2;
+    cout<<"El resultado de la suma es:   "<<suma<<endl;
+    
+    
+}

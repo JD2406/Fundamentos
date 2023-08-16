@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string nombre;
+    double horasTrabajadas, precioPorHora;
+    double porcentajeImpuesto = 0.13;
+    double limiteImpuesto = 8272.00;
+
+    
+    cout << "Ingrese el nombre del trabajador: ";
+    getline(cin, nombre);
+
+    cout << "Ingrese las horas trabajadas al mes: ";
+    cin >> horasTrabajadas;
+
+    cout << "Ingrese el precio por hora: ";
+    cin >> precioPorHora;
+
+    
+    double salarioBruto = horasTrabajadas * precioPorHora;
+
+    
+    double impuestoRCIVA = 0.0;
+    if (salarioBruto > limiteImpuesto) {
+        impuestoRCIVA = salarioBruto * porcentajeImpuesto;
+    }
+
+    
+    double salarioNeto = salarioBruto - impuestoRCIVA;
+
+    
+    cout << "Resumen del salario es " << nombre << ":" << endl;
+    cout << "Salario bruto: " << salarioBruto << " bs" << endl;
+    cout << "RC-IVA: " << impuestoRCIVA << " bs" << endl;
+    cout << "Salario : " << salarioNeto << " bs" << endl;
+
+    return 0;
+}

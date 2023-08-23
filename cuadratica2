@@ -1,0 +1,41 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    float a,b,c,D,xR,xi,x,x1,x2;
+    cout<< "Ingresar a:  ";
+    cin>>a;
+    if (a==0)
+        cout<<"No tiene solucion"<<endl;
+    else
+        cout<< "Ingresar b:  ";
+        cin>>b;
+        cout<< "Ingresar c:  ";
+        cin>>c;
+        cout<< " <- b*b-4*a*c <- b*b-4*a*c" <<endl;
+        D= b*b-4*a*c;
+        if (D<0)
+        {
+            xR = -b/(2*a);
+            xi = sqrt(-D)/(2*a);
+            cout<<"solucion imaginaria 1"<<xR<< " + "<< xi << " i " <<endl;
+            cout<<"solucion imaginaria 1"<<xR<< " - "<< xi << " i " <<endl;
+        }
+        else
+            if (D==0)
+            { 
+                x =-b/(2*a);
+                cout << "La solucion unca es:  "<<x;
+            }
+            else
+            {
+             x1= (-b + sqrt(D)) / (2*a);
+             x2= (-b - sqrt(D)) / (2*a);
+             cout<<"Solucion real 1: "<<x1<<endl;
+             cout<<"Solucion real 2: "<<x2;
+            }
+    return 0;
+}

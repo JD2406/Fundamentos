@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+struct Point {
+    double x;
+    double y;
+};
+
+struct Circle {
+    Point center;
+    double radius;
+};
+
+// Función para calcular la circunferencia a partir de tres puntos
+Circle calculateCircle(const Point& A, const Point& B, const Point& C) {
+    double D = 2 * (A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
+    double centerX = ((A.x * A.x + A.y * A.y) * (B.y - C.y) +
+                     (B.x * B.x + B.y * B.y) * (C.y - A.y) +
+                     (C.x * C.x + C.y * C.y) * (A.y - B.y)) / D;
+
+    double centerY = ((A.x * A.x + A.y * A.y) * (C.x - B.x) +
+                     (B.x * B.x + B.y * B.y) * (A.x - C.x) +
+                     (C.x * C.x + C.y * C.y) * (B.x - A.x)) / D;
+
+    double radius = sqrt((centerX - A.x) * (centerX - A.x) + (centerY - A.y) * (centerY - A.y));
+
+    return { {centerX, centerY}, radius };
+}
+
+int main() {
+    Point A, B, C;
+
+    cout << "Ingrese las coordenadas del punto A (x y): " ;
+    cin >> A.x >> A.y;
+
+    cout << "Ingrese las coordenadas del punto B (x y): " ;
+    cin >> B.x >> B.y;
+
+    cout << "Ingrese las coordenadas del punto C (x y): ";
+    cin >> C.x >> C.y;
+
+    Circle circunferencia = calculateCircle(A, B, C);
+
+    cout << "El centro de la circunferencia es (" << circunferencia.center.x << ", " << circunferencia.center.y << ")" << endl;
+    cout << "El radio de la circunferencia es " << circunferencia.radius << endl;
+
+    return 0;
+}

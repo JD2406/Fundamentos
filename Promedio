@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int numero, N, mayor, menor, prom, c;
+    cout<<"Ingresar el numero de elementos:  ";
+    cin>>N;
+    c=1; //contador de numeros
+    prom=0; //Acumulador de la suma de numeros
+    menor=100;
+    mayor=-99;
+    
+    while (c<=N)
+    {
+        do{
+        cout<<"Ingrese el "<<c<<" numero: ";
+        cin>>numero;
+        }while((numero<0)||(numero>100));
+        c++; //c=c+1;
+        prom=prom+numero;
+        if (mayor<numero)
+            mayor=numero;
+        if (menor>numero)
+            menor=numero;
+        
+    }    
+    cout<<"El promedio es:  "<<prom/N<<endl;
+    cout<<"El mayor es:  "<<mayor<<endl;
+    cout<<"El menor es:  "<<menor<<endl;
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    float l, area, perimetro;
+
+    do
+    {
+        cout << "Ingrese el lado (debe ser un valor positivo): ";
+        cin >> l;
+
+        if (l <= 0)
+        {
+            cout << "El valor ingresado no es válido. Debe ser un número positivo." << endl;
+        }
+    } while (l <= 0);
+
+    area = pow(l, 2);
+    perimetro = l + l + l + l;
+
+    cout << "El area del cuadrado es: " << area << endl;
+    cout << "El perimetro del cuadrado es: " << perimetro << endl;
+
+    return 0;
+}

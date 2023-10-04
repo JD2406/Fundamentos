@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+float infsol(float A, float B, float C, float D);
+float noinfsol(float A, float B, float C, float D);
+float Xsol (float C2, float F, float  A2, float D);
+float Ysol (float C1, float F, float B1, float E);
+
+int main() {
+    float A, B, C, D, E, F;
+    float R1, R2, A1, A2, B1, B2, C1, C2; 
+    float A_1, A_2, B_1, B_2, C_1, C_2;
+    float X, Y;
+    bool M;
+    do {
+    cout << "En 'Ax + By = C' ingrese el valor de A:" << endl;
+    cin >> A;
+    cout << "En 'Ax + By = C' ingrese el valor de B:" << endl;
+    cin >> B;
+    cout << "En 'Ax + By = C' ingrese el valor de C:" << endl;
+    cin >> C;
+    
+    cout<< "Ahora para la ecuacion 2"<< endl;
+    
+    cout << "En 'Dx + Ey = F' ingrese el valor de D:" << endl;
+    cin >> D;
+    cout << "En 'Dx + Ey = F' ingrese el valor de E:" << endl;
+    cin >> E;
+    cout << "En 'Dx + Ey = F' ingrese el valor de F:" << endl;
+    cin >> F;
+cout<<"Sus forma es de :"<<endl;
+cout<<A<<"x + "<<B<<"y = "<<C<<endl;
+cout<<D<<"x + "<<E<<"y = "<<F<<endl;
+    cout<<"¿Es esto correcto?, responda con 0 para no, y 1 para si"<<endl;    
+    do {cin>>M;} while ((M!=0)&&(M!=1));
+    } while (M==0);
+
+if (noinfsol(A, E, B, D)==0)
+   {
+       if (infsol(B, F, C, E) ==0)
+       {cout<<"Esta ecuacion tiene infinitas soluciones"<<endl;}
+       else {cout<<"Esta ecuacion no tiene soluciones Reales"<<endl;}
+   }
+   else
+    {R1= D/A;
+    R2= E/B;
+    A1= R1*A*-1; B1=R1*B*-1;C1=R1*C*-1;
+    A2= R2*A*-1; B2=R2*B*-1;C2=R2*C*-1;
+  
+    cout<<"X = "<<Xsol(C2, F, A2, D)<<endl;
+    cout<<"Y = "<<Ysol(C1, F, B1, E)<<endl;}
+return 0;}
+
+float Xsol(float C2, float F, float A2, float D) {
+    float RR;
+    RR = (C2 + F) / (A2 + D);
+    return RR;
+}
+
+float Ysol(float C1, float F, float B1, float E) {
+    float RR;
+    RR = (C1 + F) / (B1 + E);
+    return RR;}
+
+float infsol(float B, float F, float C, float E) {float RR; RR =(B*F)-(C*E); return RR;}
+float noinfsol(float A, float E, float B, float D) {float RR; RR = A*E-B*D; return RR;}

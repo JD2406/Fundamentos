@@ -1,0 +1,61 @@
+//Cuadraticafunciones.cpp
+
+#include <iostream>
+
+using namespace std;
+
+float unica(float b, float a);
+float reales(float a, float b, float c, float& x1);
+float imaginario(float a, float b, float c, float& xr);
+
+//void reales (float a, float b, float c, float& x1, float &x2);
+int main()
+{
+	float a, b, c, D, x, x1, x2, xr, xi;
+	cout << "ingrese a:";
+	cin >> a;
+	cout << "ingrese b:";
+	cin >> b;
+	cout << "ingrese c:";
+	cin >> c;
+	D = b * b - 4 * (a) * (c);
+	if (D == 0)
+		cout << "La solucion es unica: " << unica(b, a);
+	else
+		if (D > 0)
+		{
+			x2=reales(a, b, c, x1);
+			cout << "x1= " << x1 << endl;
+			cout << "x2= " << x2 << endl;
+		}
+		else
+		{
+			x2=imaginario(a, b, c, x1);
+			cout << "x1= " << x1 << "+" << x2 << "i" << endl;
+			cout << "x2= " << x1 << "-" << x2 << "i" << endl;
+		}
+	return 0;
+}
+
+float unica(float b, float a)
+{
+	float aux;
+	aux = -b / (2 * a);
+	return aux;
+}
+
+float reales(float a, float b, float c, float& x1)
+{
+	x1 = -b + sqrt(pow(b, 2) - 4 * a * c) / (2 * a);
+	float x2 = -b - sqrt(pow(b, 2) - 4 * a * c) / (2 * a);
+	return x2;
+}
+float imaginario(float a, float b, float c, float& xr)
+{
+	xr = -b / 2 * (a);
+	float xi = sqrt(-(pow(b, 2) - 4 * a * c)) / 2 * (a);
+	return xi;
+}
+
+
+

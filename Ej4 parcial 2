@@ -1,0 +1,38 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+float perimetro(float p);
+float area(float a);
+float volumen(float v);
+const float pi = 3.1416;
+
+int main()
+{
+    float r;
+    cout << "Ingrese el radio: ";
+    cin >> r;
+    cout << "El perimetro es: " << perimetro(r) << endl;
+    cout << "El area es: " << area(r) << endl;
+    cout << "El volumen es: " << volumen(r) << endl;
+    return 0;
+}
+float perimetro(float radio)
+{
+    float p;
+    p = 2 * pi * radio;
+    return p;
+}
+float area(float radio)
+{
+    float a;
+    a = pi * pow(radio,2);
+    return a;
+}
+float volumen(float radio)
+{
+    float v; 
+    v = (4 * pi * pow(radio, 3)) / 3;
+    return v;
+}

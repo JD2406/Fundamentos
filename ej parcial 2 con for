@@ -1,0 +1,32 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+float perimetro(float p);
+float area(float a);
+float volumen(float v);
+const float pi = 3.1416;
+
+int main()
+{
+    int num;
+    float precio, descuento, precioFinal;
+
+    cout << "Ingresa el numero de productos: ";
+    cin >> num;
+    for (int i = 1; i <= num; i++)
+    {
+        cout << "Introduzca el precio: ";
+        cin >> precio;
+        cout << "Introduzca el porcentaje de descuento: ";
+        cin >> descuento;
+
+        precioFinal = precio - (precio * (descuento / 100));
+        suma += precioFinal;
+        cout << "El precio final con descuento es: " << precioFinal << endl;
+
+    }
+    cout << "El monto total es: " << suma;
+    return 0;
+}

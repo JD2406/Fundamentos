@@ -1,0 +1,87 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void agregarVenta(vector<string>& productos, vector<double>& ventas);
+double calcularVentasTotales(const vector<double>& ventas);
+void mostrarReporte(const vector<string>& productos, const vector<double>& ventas);
+
+int main() {
+    vector<string> productos;
+    vector<double> ventas;
+
+    char opcion;
+
+    do {
+        cout << "==== Menu de Ventas ====" << endl;
+        cout << "1. Agregar Venta" << endl;
+        cout << "2. Ver Ventas Totales" << endl;
+        cout << "3. Mostrar Reporte de Ventas" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case '1':
+            agregarVenta(productos, ventas);
+            break;
+        case '2':
+            cout << "Ventas totales realizadas: $" << calcularVentasTotales(ventas) << endl;
+            break;
+        case '3':
+            mostrarReporte(productos, ventas);
+            break;
+        case '4':
+            cout << "Saliendo del programa." << endl;
+            break;
+        default:
+            cout << "Opción no valida. Por favor, ingrese una opcion valida." << endl;
+        }
+    } while (opcion != '4');
+
+    return 0;
+}
+
+void agregarVenta(vector<string>& productos, vector<double>& ventas) {
+    string producto;
+    double venta;
+
+    cin.ignore(); 
+    cout << "Ingrese el nombre del producto: ";
+    getline(cin, producto);
+    cout << "Ingrese la venta realizada: ";
+    cin >> venta;
+
+  
+    if (venta < 0) {
+        cout << "La venta no puede ser un numero negativo. Intentelo de nuevo." << endl;
+        return;
+    }
+
+    productos.push_back(producto);
+    ventas.push_back(venta);
+
+    cout << "Venta agregada con exito." << endl;
+}
+
+double calcularVentasTotales(const vector<double>& ventas) {
+    double total = 0;
+    for (const double& venta : ventas) {
+        total += venta;
+    }
+    return total;
+}
+
+void mostrarReporte(const vector<string>& productos, const vector<double>& ventas) {
+    if (productos.empty()) {
+        cout << "No hay ventas registradas todavia." << endl;
+        return;
+    }
+
+    cout << "==== Reporte de Ventas ====" << endl;
+    for (size_t i = 0; i < productos.size(); i++) {
+        cout << "Producto: " << productos[i] << ", Venta: Bs" << ventas[i] << endl;
+    }
+}

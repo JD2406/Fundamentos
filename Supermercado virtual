@@ -1,0 +1,127 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void agregarProducto(string nombres[], float precios[], int cantidades[], int &numProductos, const int capacidadMaxima);
+void actualizarStock(string nombres[], int cantidades[], int numProductos);
+void buscarProducto(string nombres[], float precios[], int cantidades[], int numProductos);
+void mostrarInventario(string nombres[], float precios[], int cantidades[], int numProductos);
+float calcularValorTotal(string nombres[], float precios[], int cantidades[], int numProductos);
+
+int main() {
+    int capacidadMaxima;
+    cout << "Ingrese la capacidad máxima del inventario: ";
+    cin >> capacidadMaxima;
+
+    string nombres[capacidadMaxima];
+    float precios[capacidadMaxima];
+    int cantidades[capacidadMaxima];
+    int numProductos = 0;
+    int opcion;
+
+    do {
+        cout << "MENU:" << endl;
+        cout << "1. Agregar un nuevo producto al inventario" << endl;
+        cout << "2. Actualizar la cantidad en stock de un producto existente" << endl;
+        cout << "3. Buscar un producto por nombre" << endl;
+        cout << "4. Mostrar lista de productos en el inventario" << endl;
+        cout << "5. Calcular el valor total del inventario" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Elija una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                agregarProducto(nombres, precios, cantidades, numProductos, capacidadMaxima);
+                break;
+            case 2:
+                actualizarStock(nombres, cantidades, numProductos);
+                break;
+            case 3:
+                buscarProducto(nombres, precios, cantidades, numProductos);
+                break;
+            case 4:
+                mostrarInventario(nombres, precios, cantidades, numProductos);
+                break;
+            case 5:
+                cout << "Valor total del inventario: " << calcularValorTotal(nombres, precios, cantidades, numProductos) << " BS" << endl;
+                break;
+            case 0:
+                cout << "NO VUELVA MAS COLLA TACAÑO" << endl;
+                break;
+            default:
+                cout << "Opción no válida. Intente de nuevo." << endl;
+                break;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+
+void agregarProducto(string nombres[], float precios[], int cantidades[], int &numProductos, const int capacidadMaxima) {
+    if (numProductos < capacidadMaxima) {
+        cout << "Nombre del producto: ";
+        cin >> nombres[numProductos];
+        cout << "Precio: ";
+        cin >> precios[numProductos];
+        cout << "Cantidad en stock: ";
+        cin >> cantidades[numProductos];
+        numProductos++;
+        cout << "Producto agregado al inventario." << endl;
+    } else {
+        cout << "El inventario está lleno, no se pueden agregar más productos." << endl;
+    }
+}
+
+void actualizarStock(string nombres[], int cantidades[], int numProductos) {
+    string nombreProducto;
+    cout << "Nombre del producto a actualizar: ";
+    cin >> nombreProducto;
+
+    for (int i = 0; i < numProductos; i++) {
+        if (nombres[i] == nombreProducto) {
+            cout << "Nueva cantidad en stock: ";
+            cin >> cantidades[i];
+            cout << "Cantidad en stock actualizada." << endl;
+            return;
+        }
+    }
+
+    cout << "Producto no encontrado en el inventario." << endl;
+}
+
+void buscarProducto(string nombres[], float precios[], int cantidades[], int numProductos) {
+    string nombreProducto;
+    cout << "Nombre del producto a buscar: ";
+    cin >> nombreProducto;
+
+    for (int i = 0; i < numProductos; i++) {
+        if (nombres[i] == nombreProducto) {
+            cout << "Nombre: " << nombres[i] << endl;
+            cout << "Precio: " << precios[i] << endl;
+            cout << "Cantidad en stock: " << cantidades[i] << endl;
+            return;
+        }
+    }
+
+    cout << "Producto no encontrado en el inventario." << endl;
+}
+
+void mostrarInventario(string nombres[], float precios[], int cantidades[], int numProductos) {
+    cout << "Inventario de la tienda:" << endl;
+    for (int i = 0; i < numProductos; i++) {
+        cout << "Nombre: " << nombres[i] << endl;
+        cout << "Precio: " << precios[i] << endl;
+        cout << "Cantidad en stock: " << cantidades[i] << endl;
+        cout << "---------------------------" << endl;
+    }
+}
+
+float calcularValorTotal(string nombres[], float precios[], int cantidades[], int numProductos) {
+    float valorTotal = 0.0;
+    for (int i = 0; i < numProductos; i++) {
+        valorTotal += precios[i] * cantidades[i];
+    }
+    return valorTotal;
+}
